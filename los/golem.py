@@ -40,6 +40,6 @@ for i in range(0,8):
 
 print(answer)
 
-#풀긴 풀었는데 좋은 문제는 아닌듯. 이러려면 guest와 admin의 pw가 같아야 성립하는 문제.
+#guest와 admin의 pw가 같아야 성립하는 문제.
 #사실 그 내용은 if(($result['pw']) && ($result['pw'] == $_GET['pw'])) solve("golem");  에서 명시되어 있기는 함.
 #하지만 php소스코드 없이 앞의 gui만 있다고 생각하면 그럭저럭 납득이 가긴 함.

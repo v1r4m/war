@@ -1,4 +1,8 @@
 // gcc -fno-stack-protector -no-pie -z relro -o ./stb ./stb.c
+// no stack protector
+// no pie
+// has relro(no GOT)
+
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
@@ -58,3 +62,4 @@ int main(){
 
 //못풀음
 //buffer overflow + sfp + ret
+//"A"*overflow + system_address + dummy_ret + "/bin/sh_address"

