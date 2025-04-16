@@ -44,19 +44,15 @@ def main():
     welcome_message = recv_line(s)
     print(welcome_message)
     
-    # Loop to solve addition problems
     while True:
         com = recv_line(s)
         print(com)
 
         problem = recv_line(s)
         print(problem)
-        # Solve the addition problem
         answer = solve_addition_problem(problem)
+        s.sendall(f"{answer}\r\n".encode()) #와 혐도우 진짜 개 쓰 레기 같은 문제
         
-        s.sendall(f"{answer}\r\n".encode())
-        
-        # Optional: Sleep for a short time to avoid overwhelming the server
         time.sleep(1)
     
     # Close the connection
