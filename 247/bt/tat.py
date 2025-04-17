@@ -1,15 +1,3 @@
-# ad0559@MacBook-Pro-Eunjin utils % telnet 254e61d0754dbbbe.247ctf.com 50154
-# Trying 144.76.74.118...
-# Connected to 254e61d0754dbbbe.247ctf.com.
-# Escape character is '^]'.
-# Welcome to the 247CTF addition verifier!
-# If you can solve 500 addition problems, we will give you a flag!
-# What is the answer to 387 + 183?
-# 570
-# Yes, correct!
-# What is the answer to 194 + 34?
-
-# telnet 254e61d0754dbbbe.247ctf.com 50154
 import socket
 import time
 import dotenv
